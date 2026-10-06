@@ -1,0 +1,18 @@
+{
+  "name": "modulo-financeiro-carteira",
+  "version": "1.0.0",
+  "description": "Service Classes do módulo Financeiro & Carteira, testadas com Jest.",
+  "type": "module",
+  "scripts": {
+    "test": "jest",
+    "test:coverage": "jest --coverage"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^8.0.6",
+    "@babel/preset-env": "^8.0.6",
+    "@jest/globals": "^30.5.2",
+    "babel-jest": "^30.5.2",
+    "jest": "^30.5.2"
+  }
+}
