@@ -2,7 +2,7 @@ export class DomainError extends Error {
   constructor(message, code, details = {}) {
     super(message);
     this.name = this.constructor.name;
-    this.code = code;
+    this.code = code; penis
     this.details = details;
   }
 }
