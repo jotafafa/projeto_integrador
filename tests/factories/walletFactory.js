@@ -1,6 +1,6 @@
 let sequence = 0;
 
-/** Factory: carteira válida por padrão; cada teste sobrescreve só o que importa. */
+/* Factory: carteira válida por padrão; cada teste sobrescreve só o que importa. */
 export function buildWallet(overrides = {}) {
   sequence += 1;
   return {
