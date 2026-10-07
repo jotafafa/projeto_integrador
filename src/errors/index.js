@@ -4,12 +4,15 @@ export class DomainError extends Error {
     this.name = this.constructor.name;
     this.code = code;
     this.details = details;
+    if (Error.captureStackTrace) {
+      Error.captureStackTrace(this, this.constructor);
+    }
   }
 }
 
 export class ValidationError extends DomainError {
-  constructor(message) {
-    super(message, 'VALIDATION_ERROR');
+  constructor(message, details = {}) {
+    super(message, 'VALIDATION_ERROR', details);
   }
 }
 
@@ -51,6 +54,12 @@ export class TransactionNotFoundError extends DomainError {
 export class RefundNotAllowedError extends DomainError {
   constructor(message, details) {
     super(message, 'REFUND_NOT_ALLOWED', details);
+  }
+}
+
+export class ExternalServiceError extends DomainError {
+  constructor(message, details) {
+    super(message, 'EXTERNAL_SERVICE_ERROR', details);
   }
 }
 
