@@ -1,12 +1,10 @@
-# Grupo 1 – Módulo Financeiro & Carteira
+Grupo 1 – Módulo Financeiro & Carteira
 
-Service Classes de uma carteira digital em **Node.js (ES Modules)**, testadas com **Jest**. O foco é a qualidade das regras de negócio: validação de saldo, limites de PIX/transferência, estorno e taxas dinâmicas.
-
-**Integrantes:** _preencher com nome e RA de cada membro_
+Service Classes de uma carteira digital em **Node.js (ES Modules)**, testadas com Jest. O foco é a qualidade das regras de negócio: validação de saldo, limites de PIX/transferência, estorno e taxas dinâmicas.
 
 ## 1. Visão Geral do Sistema
 
-Não há banco nem API: repositórios, e-mail e consulta de chaves PIX são **injetados** nos services, e nos testes viram *mocks*. Valores são **inteiros em centavos**.
+Não há banco nem API: repositórios, e-mail e consulta de chaves PIX são injetados nos services, e nos testes viram mocks. Valores são **inteiros em centavos**.
 
 | Service | Responsabilidade |
 |---|---|
@@ -54,8 +52,6 @@ Todos os testes seguem **AAA** (Arrange, Act, Assert), os erros assíncronos sã
 
 ## 3. Como Executar
 
-Requer Node.js 18+.
-
 ```bash
 npm install
 npx jest              # roda os testes
@@ -71,21 +67,19 @@ npx jest --coverage   # roda com cobertura (mínimo exigido: 80%)
 File                 | % Stmts | % Branch | % Funcs | % Lines |
 ---------------------|---------|----------|---------|---------|
 All files            |   98.02 |    95.52 |      90 |   97.82 |
- errors              |     100 |      100 |     100 |     100 |
- services            |   97.61 |    94.82 |   81.25 |   97.41 |
-  FeeService.js      |     100 |      100 |     100 |     100 |
-  PixService.js      |   97.36 |    93.33 |      75 |   97.22 |
-  RefundService.js   |   96.42 |    93.33 |   66.66 |      96 |
-  TransferService.js |   95.65 |    85.71 |   66.66 |   95.65 |
-  WalletService.js   |     100 |      100 |     100 |     100 |
- utils               |     100 |      100 |     100 |     100 |
+errors               |     100 |      100 |     100 |     100 |
+services             |   97.61 |    94.82 |   81.25 |   97.41 |
+FeeService.js        |     100 |      100 |     100 |     100 |
+PixService.js        |   97.36 |    93.33 |      75 |   97.22 |
+RefundService.js     |   96.42 |    93.33 |   66.66 |      96 |
+TransferService.js   |   95.65 |    85.71 |   66.66 |   95.65 |
+WalletService.js     |     100 |      100 |     100 |     100 |
+utils                |     100 |      100 |     100 |     100 |
 ---------------------|---------|----------|---------|---------|
 Test Suites: 5 passed | Tests: 71 passed
 ```
 
 Todas as métricas passam da meta de 80%. As linhas não cobertas são apenas o valor padrão do relógio (`clock = () => new Date()`), que os testes sempre substituem por uma data fixa.
-
-📸 _Anexar aqui um print do terminal com a cobertura, gerado na máquina do grupo._
 
 ### Análise crítica dos cenários mais complexos
 
