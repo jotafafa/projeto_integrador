@@ -26,7 +26,6 @@ describe('WalletService', () => {
 
     test('rejeita carteira inexistente', async () => {
       const { sut } = makeSut();
-
       await expect(sut.getBalance('nope')).rejects.toThrow(WalletNotFoundError);
     });
   });
@@ -36,7 +35,6 @@ describe('WalletService', () => {
       const { sut, walletRepository } = makeSut(buildWallet({ id: 'w1' }));
 
       await sut.deposit('w1', 5_000);
-
       expect(walletRepository.credit).toHaveBeenCalledWith('w1', 5_000);
     });
 
@@ -44,7 +42,6 @@ describe('WalletService', () => {
       const { sut, walletRepository } = makeSut();
 
       await expect(sut.deposit('w1', amount)).rejects.toThrow(ValidationError);
-
       expect(walletRepository.findById).not.toHaveBeenCalled();
     });
 
@@ -52,7 +49,6 @@ describe('WalletService', () => {
       const { sut, walletRepository } = makeSut(buildBlockedWallet({ id: 'w1' }));
 
       await expect(sut.deposit('w1', 100)).rejects.toThrow(WalletBlockedError);
-
       expect(walletRepository.credit).not.toHaveBeenCalled();
     });
   });
@@ -62,7 +58,6 @@ describe('WalletService', () => {
       const { sut, walletRepository } = makeSut(buildWallet({ id: 'w1', balance: 10_000 }));
 
       await sut.withdraw('w1', 4_000);
-
       expect(walletRepository.debit).toHaveBeenCalledWith('w1', 4_000);
     });
 
@@ -70,7 +65,6 @@ describe('WalletService', () => {
       const { sut, walletRepository } = makeSut(buildWallet({ id: 'w1', balance: 4_000 }));
 
       await sut.withdraw('w1', 4_000);
-
       expect(walletRepository.debit).toHaveBeenCalledWith('w1', 4_000);
     });
 
@@ -78,7 +72,6 @@ describe('WalletService', () => {
       const { sut, walletRepository } = makeSut(buildWallet({ id: 'w1', balance: 3_999 }));
 
       const promise = sut.withdraw('w1', 4_000);
-
       await expect(promise).rejects.toThrow(InsufficientFundsError);
       await expect(promise).rejects.toMatchObject({ details: { required: 4_000, available: 3_999 } });
       expect(walletRepository.debit).not.toHaveBeenCalled();
