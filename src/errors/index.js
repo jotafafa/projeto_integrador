@@ -18,13 +18,17 @@ export class ValidationError extends DomainError {
 
 export class WalletNotFoundError extends DomainError {
   constructor(walletId) {
-    super(`Carteira não encontrada: ${walletId}`, 'WALLET_NOT_FOUND', { walletId });
+    super(`Carteira não encontrada: ${walletId}`, 'WALLET_NOT_FOUND', {
+      walletId,
+    });
   }
 }
 
 export class WalletBlockedError extends DomainError {
   constructor(walletId) {
-    super(`A carteira ${walletId} está bloqueada.`, 'WALLET_BLOCKED', { walletId });
+    super(`A carteira ${walletId} está bloqueada.`, 'WALLET_BLOCKED', {
+      walletId,
+    });
   }
 }
 
@@ -54,12 +58,6 @@ export class TransactionNotFoundError extends DomainError {
 export class RefundNotAllowedError extends DomainError {
   constructor(message, details) {
     super(message, 'REFUND_NOT_ALLOWED', details);
-  }
-}
-
-export class ExternalServiceError extends DomainError {
-  constructor(message, details) {
-    super(message, 'EXTERNAL_SERVICE_ERROR', details);
   }
 }
 
